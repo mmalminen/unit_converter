@@ -24,10 +24,10 @@ def ounce_to_gram(ounce: float) -> float:
 def meter_to_feet(meter: float) -> float:
     return meter * m_to_f_factor
 
-# keeps prompting until valid float is entered
 def feet_to_meter(feet: float) -> float:
     return feet / m_to_f_factor
 
+# keeps prompting until valid float is entered
 def get_float_input(prompt: str) -> float:
     while True:
         try:
