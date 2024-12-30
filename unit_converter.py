@@ -1,10 +1,13 @@
 from typing import Callable, Tuple
+import math
 
 # conversion factors
 c_to_f_factor = 9/5
 f_to_c_factor = 5/9
 g_to_oz_factor = 0.03527396
 m_to_f_factor = 3.28084
+deg_to_rad_factor = math.pi / 180
+rad_to_deg_factor = 180 / math.pi
 
 # temperature conversion functions
 def celsius_to_fahrenheit(celsius: float) -> float:
@@ -26,6 +29,13 @@ def meter_to_feet(meter: float) -> float:
 
 def feet_to_meter(feet: float) -> float:
     return feet / m_to_f_factor
+
+# angle conversion functions
+def degrees_to_radians(degrees: float) -> float:
+    return degrees * deg_to_rad_factor
+
+def radians_to_degrees(radians: float) -> float:
+    return radians * rad_to_deg_factor
 
 # keeps prompting until valid float is entered
 def get_float_input(prompt: str) -> float:
@@ -72,15 +82,21 @@ def main() -> None:
         ("Convert Feet to Meters", feet_to_meter, "feet", "meters")
     ]
 
+    angle_options = [
+        ("Convert Degrees to Radians", degrees_to_radians, "degrees", "radians"),
+        ("Convert Radians to Degrees", radians_to_degrees, "radians", "degrees")
+    ]
+
 # main menu
     while True:
         print("\nMain Menu:")
         print("1. Temperature")
         print("2. Weight")
         print("3. Distance")
-        print("4. Exit")
+        print("4. Angle")
+        print("5. Exit")
         
-        choice = input("Enter your choice (1-4): ")
+        choice = input("Enter your choice (1-5): ")
         
         if choice == '1':
             conversion_menu("Temperature Conversion", temperature_options)
@@ -89,6 +105,8 @@ def main() -> None:
         elif choice == '3':
             conversion_menu("Distance Conversion", distance_options)
         elif choice == '4':
+            conversion_menu("Angle Conversion", angle_options)
+        elif choice == '5':
             print("Exiting the program.")
             break
         else:
