@@ -65,7 +65,7 @@ def conversion_menu(title: str, options: list[Tuple[str, Callable[[float], float
         else:
             print("Invalid selection, please try again.")
 
-# options for conversion menu
+# content for conversion menu
 def main() -> None:
     temperature_options = [
         ("Convert Celsius to Fahrenheit", celsius_to_fahrenheit, "Celsius", "Fahrenheit"),
